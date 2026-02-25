@@ -1,6 +1,7 @@
 // ===== BUSINESS SETTINGS =====
 
-const businessName = "Flamingo Cafe";
+const businessName = "AWTE Cool Solutions And PCB Repair";
+
 const googleReviewLink =
 "https://g.page/r/CTOomNcWlZN2EBM/review";
 
@@ -11,75 +12,84 @@ const templates = {
 
   en: {
     intro: [
-      "Amazing experience at",
-      "Very happy with the service at",
-      "Loved visiting",
-      "Great overall experience at",
-      "Highly satisfied with"
+      "Excellent experience with",
+      "Very satisfied with the service at",
+      "Highly impressed by",
+      "Great repair service from",
+      "Professional work done by"
     ],
+
     middle: [
-      "the staff was very friendly.",
-      "quality was excellent.",
-      "service was quick and professional.",
-      "food and atmosphere were amazing.",
-      "everything was clean and well managed."
+      "the technician was skilled and helpful.",
+      "repair was done quickly and professionally.",
+      "pricing was honest and affordable.",
+      "communication was clear and transparent.",
+      "issue was fixed perfectly."
     ],
+
     ending: [
       "Highly recommended!",
-      "Will visit again.",
-      "Totally worth it.",
-      "Five star experience.",
-      "Must try place."
+      "Will definitely visit again.",
+      "Great service overall.",
+      "Trusted repair shop.",
+      "Five star experience."
     ]
   },
 
+
   hi: {
     intro: [
-      "मेरा अनुभव बहुत अच्छा रहा",
-      "बहुत बढ़िया सर्विस मिली",
-      "यहाँ आकर अच्छा लगा",
-      "काफी शानदार अनुभव था",
-      "मैं बहुत संतुष्ट हूँ"
+      "बहुत अच्छा अनुभव रहा",
+      "सर्विस से पूरी तरह संतुष्ट हूँ",
+      "यहाँ की सेवा शानदार रही",
+      "बहुत प्रोफेशनल काम किया गया",
+      "बहुत बढ़िया रिपेयर सर्विस मिली"
     ],
+
     middle: [
-      "स्टाफ बहुत अच्छा था।",
-      "सर्विस तेज और प्रोफेशनल थी।",
-      "क्वालिटी बहुत अच्छी थी।",
-      "जगह साफ और अच्छी थी।",
-      "पूरा अनुभव शानदार रहा।"
+      "टेक्नीशियन बहुत मददगार था।",
+      "रिपेयर जल्दी और सही तरीके से हुआ।",
+      "प्राइसिंग ईमानदार और सही थी।",
+      "पूरा काम प्रोफेशनल तरीके से हुआ।",
+      "समस्या पूरी तरह ठीक हो गई।"
     ],
+
     ending: [
-      "जरूर ट्राय करें।",
-      "फिर से आऊंगा।",
-      "बहुत बढ़िया जगह है।",
-      "पूरी तरह संतुष्ट।",
+      "जरूर रिकमेंड करूंगा।",
+      "फिर से सर्विस लूंगा।",
+      "बहुत भरोसेमंद जगह है।",
+      "शानदार अनुभव।",
       "Highly recommended."
     ]
   },
+
 
   mr: {
     intro: [
       "खूप छान अनुभव आला",
-      "सेवा खूप चांगली होती",
-      "येथे येऊन आनंद झाला",
-      "एकदम उत्तम अनुभव",
-      "मी खूप समाधानी आहे"
+      "सेवा खूप समाधानकारक होती",
+      "प्रोफेशनल काम केले",
+      "रिपेअर सर्विस उत्कृष्ट होती",
+      "खूप विश्वासार्ह सेवा मिळाली"
     ],
+
     middle: [
-      "स्टाफ खूप मदत करणारा होता.",
-      "सर्विस जलद आणि प्रोफेशनल होती.",
-      "क्वालिटी अप्रतिम होती.",
-      "जागा स्वच्छ आणि छान होती.",
-      "एकूण अनुभव खूप चांगला."
+      "टेक्निशियन खूप मदत करणारा होता.",
+      "काम जलद आणि व्यवस्थित झाले.",
+      "किंमत योग्य आणि प्रामाणिक होती.",
+      "समस्या पूर्णपणे सुटली.",
+      "संपूर्ण अनुभव खूप चांगला होता."
     ],
+
     ending: [
       "नक्की भेट द्या.",
-      "पुन्हा येणार.",
-      "खूपच छान जागा.",
-      "पूर्ण समाधान.",
+      "पुन्हा सेवा घेईन.",
+      "विश्वास ठेवण्यासारखी जागा.",
+      "खूप समाधान.",
       "Highly recommended."
     ]
   }
+
 };
 
 
@@ -87,7 +97,7 @@ const templates = {
 
 let currentLang = "en";
 let shownCount = 0;
-const batchSize = 10;   // how many reviews per load
+const batchSize = 10;
 let generatedReviews = [];
 
 
@@ -98,6 +108,7 @@ function randomItem(arr) {
 }
 
 function createReview(lang) {
+
   const t = templates[lang];
 
   return (
@@ -109,9 +120,10 @@ function createReview(lang) {
 }
 
 
-// ===== PREPARE MANY REVIEWS =====
+// ===== BUILD 100 UNIQUE REVIEWS =====
 
 function buildPool() {
+
   generatedReviews = [];
   const used = new Set();
 
@@ -124,7 +136,7 @@ function buildPool() {
 }
 
 
-// ===== RENDER NEXT BATCH =====
+// ===== LOAD MORE =====
 
 function loadMore() {
 
@@ -170,32 +182,17 @@ function setLanguage(lang) {
 }
 
 
-// ===== POST =====
+// ===== COPY + OPEN GOOGLE =====
 
 function postReview(text) {
 
-  navigator.clipboard.writeText(text)
-    .then(() => {
-      window.open(googleReviewLink, "_blank");
-      showCopiedMessage();
-    })
-    .catch(() => {
+  navigator.clipboard.writeText(text).then(() => {
 
-      // fallback method (old browsers)
-      const temp = document.createElement("textarea");
-      temp.value = text;
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand("copy");
-      document.body.removeChild(temp);
+    window.open(googleReviewLink, "_blank");
 
-      window.open(googleReviewLink, "_blank");
-      showCopiedMessage();
-    });
-}
+    alert("Review copied 👍 Paste and press POST.");
 
-function showCopiedMessage() {
-  alert("Review copied. Paste and press POST.");
+  });
 }
 
 
